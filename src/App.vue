@@ -1,9 +1,38 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div id="db-wrapper">
+    <!-- navbar vertical -->
+    <!-- Sidebar -->
+    <nav class="navbar-vertical navbar">
+      <div class="nav-scroller">
+        <!-- Brand logo -->
+        <router-link class="navbar-brand" to="/">
+          <img src="assets/images/brand/logo/logo.svg" alt="" />
+        </router-link>
+        <!-- Navbar nav -->
+        <ul class="navbar-nav flex-column" id="sideNavbar">
+          <li class="nav-item">
+            <router-link class="nav-link has-arrow" :to="{ name: 'home' }">
+              <i class="fa-solid fa-house nav-icon icon-xs me-2"></i> Home
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'login' }">
+              <i class="fa-solid fa-lock-open nav-icon icon-xs me-2"></i> Login
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <button class="btn btn-danger" @click="logout">Logout</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Page Content -->
+    <div id="page-content">
+      <router-view />
+    </div>
+  </div>
 </template>
 
 <style>
@@ -11,20 +40,5 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
