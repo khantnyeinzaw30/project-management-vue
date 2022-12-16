@@ -117,6 +117,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   name: "RegisterView",
   data() {
@@ -134,6 +135,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions(["storeUserData"]),
     register() {
       if (
         !this.registerData.name ||

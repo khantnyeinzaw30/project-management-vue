@@ -19,13 +19,7 @@
           <tr>
             <td class="align-middle">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-2.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Anita Parmar</h5>
                   <p class="mb-0">anita@example.com</p>
@@ -58,13 +52,7 @@
           <tr>
             <td class="align-middle">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-1.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Jitu Chauhan</h5>
                   <p class="mb-0">jituchauhan@example.com</p>
@@ -97,13 +85,7 @@
           <tr>
             <td class="align-middle">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-3.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Sandeep Chauhan</h5>
                   <p class="mb-0">sandeepchauhan@example.com</p>
@@ -137,13 +119,7 @@
           <tr>
             <td class="align-middle">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-4.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
 
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Amanda Darnell</h5>
@@ -178,13 +154,7 @@
           <tr>
             <td class="align-middle">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-5.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
 
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Patricia Murrill</h5>
@@ -219,13 +189,7 @@
           <tr>
             <td class="align-middle border-bottom-0">
               <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="assets/images/avatar/avatar-6.jpg"
-                    alt=""
-                    class="avatar-md avatar rounded-circle"
-                  />
-                </div>
+                <div></div>
                 <div class="ms-3 lh-1">
                   <h5 class="fw-bold mb-1">Darshini Nair</h5>
                   <p class="mb-0">darshininair@example.com</p>

@@ -80,7 +80,7 @@
               <div
                 class="icon-shape icon-md bg-light-primary text-primary rounded-1"
               >
-                <i class="fa-solid fa-circle-user fs-4"></i>
+                <i class="fa-solid fa-people-group"></i>
               </div>
             </div>
             <!-- project number -->
@@ -107,8 +107,11 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import ActiveProjects from "../components/ActiveProjects.vue";
 import TeamMembers from "../components/TeamMembers.vue";
+import authHeader from "../services/auth-header";
+
 export default {
   name: "HomeView",
   components: {
@@ -120,11 +123,24 @@ export default {
       projectCount: 0,
       teamCount: 0,
       taskCount: 0,
+      headers: authHeader(),
     };
+  },
+  computed: {
+    ...mapState(["apiUrl"]),
   },
   methods: {
     getAllCounts() {
-      console.log("running");
+      this.axios
+        .get(this.apiUrl + "counts", {
+          headers: this.headers,
+        })
+        .then((response) => {
+          this.projectCount = response.data.projectCount;
+          this.taskCount = response.data.taskCount;
+          this.teamCount = response.data.teamCount;
+        })
+        .catch((e) => console.log(e));
     },
   },
   mounted() {

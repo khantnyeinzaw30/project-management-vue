@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import LoginPage from "../views/auth/LoginPage.vue";
 import RegisterPage from "../views/auth/RegisterPage.vue";
-import CreateProject from "../views/CreateProject.vue";
+import CreateProject from "../views/project/CreateProject.vue";
+import SingleProject from "../views/project/SingleProject.vue";
 
 const routes = [
   {
@@ -24,6 +25,12 @@ const routes = [
     path: "/create-project",
     name: "createProject",
     component: CreateProject,
+  },
+  {
+    path: "/project/:projectId",
+    name: "singleProject",
+    component: SingleProject,
+    props: true,
   },
 ];
 

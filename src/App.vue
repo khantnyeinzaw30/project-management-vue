@@ -6,7 +6,7 @@
       <div class="nav-scroller">
         <!-- Brand logo -->
         <router-link class="navbar-brand" to="/">
-          <img src="assets/images/brand/logo/logo.svg" alt="" />
+          <LogoComponent />
         </router-link>
         <!-- Navbar nav -->
         <ul class="navbar-nav flex-column" id="sideNavbar">
@@ -22,7 +22,9 @@
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <button class="btn btn-danger" @click="logout">Logout</button>
+              <button class="btn btn-danger" @click="handleLogout">
+                Logout
+              </button>
             </a>
           </li>
         </ul>
@@ -42,3 +44,17 @@
   -moz-osx-font-smoothing: grayscale;
 }
 </style>
+
+<script>
+import LogoComponent from "../src/components/LogoComponent.vue";
+
+export default {
+  components: { LogoComponent },
+  methods: {
+    handleLogout() {
+      localStorage.removeItem("token");
+      this.$router.push("/login");
+    },
+  },
+};
+</script>

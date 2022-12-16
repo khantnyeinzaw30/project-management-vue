@@ -7,12 +7,9 @@
           <!-- Card body -->
           <div class="card-body p-6">
             <div class="mb-4">
-              <a href="#"
-                ><img
-                  src="assets/images/brand/logo/logo-primary.svg"
-                  class="mb-2"
-                  alt=""
-              /></a>
+              <a href="#">
+                <LogoComponent />
+              </a>
               <p class="mb-6">Create New Project</p>
             </div>
             <!-- Form -->
@@ -72,9 +69,12 @@
 
 <script>
 import { mapState } from "vuex";
-import authHeader from "../services/auth-header";
+import authHeader from "../../services/auth-header";
+import LogoComponent from "../../components/LogoComponent.vue";
+
 export default {
   name: "CreateProject",
+  components: { LogoComponent },
   data() {
     return {
       projectData: {
@@ -94,7 +94,11 @@ export default {
         .post(this.apiUrl + "projects", this.projectData, {
           headers: authHeader(),
         })
-        .then((response) => console.log(response.data))
+        .then((response) => {
+          if (response.data.status === true) {
+            this.$router.push({ name: "home" });
+          }
+        })
         .catch((e) => console.log(e));
     },
   },
