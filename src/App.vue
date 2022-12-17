@@ -16,6 +16,11 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link has-arrow" :to="{ name: 'taskList' }">
+              <i class="fa-solid fa-house nav-icon icon-xs me-2"></i> Task List
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'login' }">
               <i class="fa-solid fa-lock-open nav-icon icon-xs me-2"></i> Login
             </router-link>

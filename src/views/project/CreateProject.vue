@@ -68,8 +68,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import authHeader from "../../services/auth-header";
+import { mapGetters } from "vuex";
 import LogoComponent from "../../components/LogoComponent.vue";
 
 export default {
@@ -86,13 +85,15 @@ export default {
     };
   },
   computed: {
-    ...mapState(["apiUrl"]),
+    ...mapGetters({
+      headers: "getHeaders",
+    }),
   },
   methods: {
     createProject() {
       this.axios
-        .post(this.apiUrl + "projects", this.projectData, {
-          headers: authHeader(),
+        .post("/api/projects", this.projectData, {
+          headers: this.headers,
         })
         .then((response) => {
           if (response.data.status === true) {

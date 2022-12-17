@@ -81,24 +81,23 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import authHeader from "../services/auth-header";
-
+import { mapGetters } from "vuex";
 export default {
   name: "ActiveProjects",
   data() {
     return {
       projects: [],
-      headers: authHeader(),
     };
   },
   computed: {
-    ...mapState(["apiUrl"]),
+    ...mapGetters({
+      headers: "getHeaders",
+    }),
   },
   methods: {
     getAllProjects() {
       this.axios
-        .get(this.apiUrl + "projects", {
+        .get("/api/projects", {
           headers: this.headers,
         })
         .then((response) => {
@@ -116,7 +115,7 @@ export default {
     },
     deleteProject(projectId) {
       this.axios
-        .delete(this.apiUrl + `projects/${projectId}`, {
+        .delete(`/api/projects/${projectId}`, {
           headers: this.headers,
         })
         .then((response) => console.log(response.data))

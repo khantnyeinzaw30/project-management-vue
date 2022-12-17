@@ -107,7 +107,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
 import ActiveProjects from "../components/ActiveProjects.vue";
 import TeamMembers from "../components/TeamMembers.vue";
 import authHeader from "../services/auth-header";
@@ -126,13 +125,10 @@ export default {
       headers: authHeader(),
     };
   },
-  computed: {
-    ...mapState(["apiUrl"]),
-  },
   methods: {
     getAllCounts() {
       this.axios
-        .get(this.apiUrl + "counts", {
+        .get("/api/counts", {
           headers: this.headers,
         })
         .then((response) => {

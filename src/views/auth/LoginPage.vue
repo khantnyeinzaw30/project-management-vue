@@ -6,12 +6,7 @@
         <!-- Card body -->
         <div class="card-body p-6">
           <div class="mb-4">
-            <a href="#"
-              ><img
-                src="assets/images/brand/logo/logo-primary.svg"
-                class="mb-2"
-                alt=""
-            /></a>
+            <a href="#"><LogoComponent /></a>
             <p class="mb-6">Please enter your user information.</p>
           </div>
           <div class="alert alert-danger" v-if="logginFailed">
@@ -65,8 +60,11 @@
 
 <script>
 import { mapActions } from "vuex";
+import LogoComponent from "@/components/LogoComponent.vue";
+
 export default {
   name: "LoginView",
+  components: { LogoComponent },
   data() {
     return {
       loginData: {
@@ -83,7 +81,7 @@ export default {
         alert("Please fill all the inputs");
       } else {
         this.axios
-          .post("http://localhost:8000/api/login", this.loginData)
+          .post("/api/login", this.loginData)
           .then((response) => {
             if (response.data.status == true) {
               this.storeUserData(response.data.token).then(() =>

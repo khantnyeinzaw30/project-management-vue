@@ -24,7 +24,7 @@
               <a href="#">
                 <LogoComponent />
               </a>
-              <p class="mb-6">Update Project</p>
+              <p class="mb-6">Update {{ project.project_name }}</p>
             </div>
             <!-- Form -->
             <form @submit.prevent="updateProject">
@@ -82,9 +82,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-import authHeader from "../../services/auth-header";
 import LogoComponent from "../../components/LogoComponent.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "UpdateProject",
@@ -101,16 +100,17 @@ export default {
         ended_at: "",
       },
       project: [],
-      headers: authHeader(),
     };
   },
   computed: {
-    ...mapState(["apiUrl"]),
+    ...mapGetters({
+      headers: "getHeaders",
+    }),
   },
   methods: {
     updateProject() {
       this.axios
-        .put(this.apiUrl + `projects/${this.projectId}`, this.updateData, {
+        .put(`/api/projects/${this.projectId}`, this.updateData, {
           headers: this.headers,
         })
         .then((response) => {
@@ -122,7 +122,7 @@ export default {
     },
     getProjectToUpdate() {
       this.axios
-        .get(this.apiUrl + `projects/${this.projectId}`, {
+        .get(`/api/projects/${this.projectId}`, {
           headers: this.headers,
         })
         .then((response) => {

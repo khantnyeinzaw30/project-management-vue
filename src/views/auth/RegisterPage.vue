@@ -7,11 +7,7 @@
         <div class="card-body p-6">
           <div class="mb-4">
             <a href="#">
-              <img
-                src="assets/images/brand/logo/logo-primary.svg"
-                class="mb-2"
-                alt=""
-              />
+              <LogoComponent />
             </a>
             <p class="mb-6">Please enter your user information.</p>
           </div>
@@ -118,8 +114,11 @@
 
 <script>
 import { mapActions } from "vuex";
+import LogoComponent from "@/components/LogoComponent.vue";
+
 export default {
   name: "RegisterView",
+  components: { LogoComponent },
   data() {
     return {
       registerData: {
@@ -151,7 +150,7 @@ export default {
           "Password and password confirmation didn't match!";
       } else {
         this.axios
-          .post("http://localhost:8000/api/register", this.registerData)
+          .post("/api/register", this.registerData)
           .then((response) => {
             if (response.data.status == true) {
               this.storeUserData(response.data.token).then(() =>

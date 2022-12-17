@@ -1,9 +1,12 @@
 import { createStore } from "vuex";
+import authHeader from "@/services/auth-header";
 
 export default createStore({
   state: {
     token: null,
-    apiUrl: "http://localhost:8000/api/",
+  },
+  getters: {
+    getHeaders: () => authHeader(),
   },
   mutations: {},
   actions: {
