@@ -36,7 +36,7 @@
             <!-- project number -->
             <div>
               <h1 class="fw-bold">{{ projectCount }}</h1>
-              <p class="mb-0"><span class="text-dark me-2">2</span>Completed</p>
+              <!-- <p class="mb-0"><span class="text-dark me-2">2</span>Completed</p> -->
             </div>
           </div>
         </div>
@@ -60,9 +60,9 @@
             <!-- project number -->
             <div>
               <h1 class="fw-bold">{{ taskCount }}</h1>
-              <p class="mb-0">
+              <!-- <p class="mb-0">
                 <span class="text-dark me-2">28</span>Completed
-              </p>
+              </p> -->
             </div>
           </div>
         </div>
@@ -86,7 +86,7 @@
             <!-- project number -->
             <div>
               <h1 class="fw-bold">{{ teamCount }}</h1>
-              <p class="mb-0"><span class="text-dark me-2">1</span>Completed</p>
+              <!-- <p class="mb-0"><span class="text-dark me-2">1</span>Completed</p> -->
             </div>
           </div>
         </div>
@@ -107,9 +107,9 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import ActiveProjects from "../components/ActiveProjects.vue";
-import TeamMembers from "../components/TeamMembers.vue";
-import authHeader from "../services/auth-header";
+import TeamMembers from "../components/TeamMembersComponent.vue";
 
 export default {
   name: "HomeView",
@@ -122,8 +122,12 @@ export default {
       projectCount: 0,
       teamCount: 0,
       taskCount: 0,
-      headers: authHeader(),
     };
+  },
+  computed: {
+    ...mapGetters({
+      headers: "getHeaders",
+    }),
   },
   methods: {
     getAllCounts() {

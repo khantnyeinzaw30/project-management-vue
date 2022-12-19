@@ -35,25 +35,25 @@
                   placeholder="Description Here"
                 ></textarea>
               </div>
+              <!-- start date -->
+              <div class="mb-3">
+                <label class="form-label">Date to start</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  v-model="projectData.started_at"
+                />
+              </div>
+              <!-- end date -->
+              <div class="mb-3">
+                <label class="form-label">Date to end</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  v-model="projectData.ended_at"
+                />
+              </div>
               <div>
-                <!-- start date -->
-                <div class="mb-3">
-                  <label class="form-label">Date to start</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="projectData.started_at"
-                  />
-                </div>
-                <!-- end date -->
-                <div class="mb-3">
-                  <label class="form-label">Date to end</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="projectData.ended_at"
-                  />
-                </div>
                 <!-- Button -->
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">Save</button>

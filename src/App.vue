@@ -21,6 +21,11 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-link" :to="{ name: 'registerTeam' }">
+              <i class="fa-solid fa-users nav-icon icon-xs me-2"></i> Teams
+            </router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'login' }">
               <i class="fa-solid fa-lock-open nav-icon icon-xs me-2"></i> Login
             </router-link>
@@ -57,8 +62,10 @@ export default {
   components: { LogoComponent },
   methods: {
     handleLogout() {
-      localStorage.removeItem("token");
-      this.$router.push("/login");
+      this.$store.commit("logout");
+      if (this.$route.name !== "login") {
+        this.$router.push("/login");
+      }
     },
   },
 };
