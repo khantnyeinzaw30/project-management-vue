@@ -1,80 +1,78 @@
 <template>
-  <div class="container-fluid py-6">
-    <div class="row">
-      <div class="col-12 col-lg-4">
-        <div class="card mb-4">
-          <h3 class="card-header text-primary">
-            {{ project.project_name }}
-          </h3>
-          <div class="card-body p-4">
-            <p class="card-text">{{ project.description }}</p>
-            <span class="badge text-bg-primary me-3">{{
-              project.started_at
-            }}</span>
-            <span class="badge text-bg-primary">{{ project.ended_at }}</span>
-          </div>
+  <div class="row">
+    <div class="col-12 col-lg-4">
+      <div class="card mb-4">
+        <h3 class="card-header text-primary">
+          {{ project.project_name }}
+        </h3>
+        <div class="card-body p-4">
+          <p class="card-text">{{ project.description }}</p>
+          <span class="badge text-bg-primary me-3">{{
+            project.started_at
+          }}</span>
+          <span class="badge text-bg-primary">{{ project.ended_at }}</span>
         </div>
       </div>
-      <div class="col-12 col-lg-8">
-        <!-- Card -->
-        <div class="card smooth-shadow-md">
-          <!-- Card body -->
-          <div class="card-body p-6">
-            <div class="mb-4">
-              <a href="#">
-                <LogoComponent />
-              </a>
-              <p class="mb-6">Update {{ project.project_name }}</p>
+    </div>
+    <div class="col-12 col-lg-8">
+      <!-- Card -->
+      <div class="card smooth-shadow-md">
+        <!-- Card body -->
+        <div class="card-body p-6">
+          <div class="mb-4">
+            <a href="#">
+              <LogoComponent />
+            </a>
+            <p class="mb-6">Update {{ project.project_name }}</p>
+          </div>
+          <!-- Form -->
+          <form @submit.prevent="updateProject">
+            <!-- Project Name -->
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                v-model="updateData.project_name"
+                placeholder="New Project Name Here"
+              />
             </div>
-            <!-- Form -->
-            <form @submit.prevent="updateProject">
-              <!-- Project Name -->
+            <!-- Description -->
+            <div class="mb-3">
+              <label class="form-label">Description</label>
+              <textarea
+                class="form-control"
+                cols="30"
+                rows="10"
+                v-model="updateData.description"
+                placeholder="New Description Here"
+              ></textarea>
+            </div>
+            <div>
+              <!-- start date -->
               <div class="mb-3">
-                <label class="form-label">Name</label>
+                <label class="form-label">New Start Date</label>
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  v-model="updateData.project_name"
-                  placeholder="New Project Name Here"
+                  v-model="updateData.started_at"
                 />
               </div>
-              <!-- Description -->
+              <!-- end date -->
               <div class="mb-3">
-                <label class="form-label">Description</label>
-                <textarea
+                <label class="form-label">New End Date</label>
+                <input
+                  type="date"
                   class="form-control"
-                  cols="30"
-                  rows="10"
-                  v-model="updateData.description"
-                  placeholder="New Description Here"
-                ></textarea>
+                  v-model="updateData.ended_at"
+                />
               </div>
-              <div>
-                <!-- start date -->
-                <div class="mb-3">
-                  <label class="form-label">New Start Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="updateData.started_at"
-                  />
-                </div>
-                <!-- end date -->
-                <div class="mb-3">
-                  <label class="form-label">New End Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    v-model="updateData.ended_at"
-                  />
-                </div>
-                <!-- Button -->
-                <div class="d-grid">
-                  <button type="submit" class="btn btn-primary">Save</button>
-                </div>
+              <!-- Button -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-primary">Save</button>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>

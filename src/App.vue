@@ -42,7 +42,9 @@
     </nav>
     <!-- Page Content -->
     <div id="page-content">
-      <router-view />
+      <div class="container-fluid py-6">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>

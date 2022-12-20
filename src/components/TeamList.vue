@@ -79,6 +79,18 @@ export default {
         })
         .catch((err) => console.log(err));
     },
+    deleteTeam(teamId) {
+      this.axios
+        .delete(`/api/teams/${teamId}`, {
+          headers: this.headers,
+        })
+        .then((response) => {
+          if (response.data.isDeleted) {
+            location.reload();
+          }
+        })
+        .catch((err) => console.log(err));
+    },
   },
   mounted() {
     this.getTeamList();

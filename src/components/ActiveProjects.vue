@@ -118,7 +118,11 @@ export default {
         .delete(`/api/projects/${projectId}`, {
           headers: this.headers,
         })
-        .then((response) => console.log(response.data))
+        .then((response) => {
+          if (response.data.isDeleted) {
+            location.reload();
+          }
+        })
         .catch((e) => console.log(e));
     },
   },
