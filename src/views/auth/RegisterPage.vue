@@ -153,7 +153,7 @@ export default {
           .post("/api/register", this.registerData)
           .then((response) => {
             if (response.data.status == true) {
-              this.storeUserData(response.data.token).then(() =>
+              this.storeUserData(response.data).then(() =>
                 this.$router.push({ name: "home" })
               );
             } else {

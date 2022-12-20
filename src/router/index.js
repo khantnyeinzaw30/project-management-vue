@@ -7,6 +7,7 @@ import SingleProject from "@/views/project/SingleProject.vue";
 import TaskList from "@/views/task/TaskList.vue";
 import RegisterTeam from "@/views/team_member/RegisterTeam.vue";
 import TeamMember from "@/views/team_member/TeamMember.vue";
+import CreateTask from "@/views/task/CreateTask.vue";
 // import store from "@/store";
 
 const routes = [
@@ -41,6 +42,11 @@ const routes = [
     path: "/task_list",
     name: "taskList",
     component: TaskList,
+  },
+  {
+    path: "/create_task",
+    name: "createTask",
+    component: CreateTask,
   },
   {
     path: "/register_new_team",
