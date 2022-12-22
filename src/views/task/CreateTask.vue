@@ -159,7 +159,7 @@ export default {
         .get(`/api/userList/${userId}`, {
           headers: this.headers,
         })
-        .then((response) => (this.userList = response.data.users))
+        .then((response) => (this.userList = response.data.userList))
         .catch((err) => console.log(err));
     },
   },
