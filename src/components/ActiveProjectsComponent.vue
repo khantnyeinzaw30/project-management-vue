@@ -54,7 +54,7 @@
                   class="btn btn-primary"
                   @click="
                     $router.push({
-                      name: 'singleProject',
+                      name: 'updateProject',
                       params: { projectId: project.id },
                     })
                   "

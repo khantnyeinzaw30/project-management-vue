@@ -27,7 +27,7 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'registerTeam' }">
+            <router-link class="nav-link" :to="{ name: 'createTeam' }">
               <i class="fa-solid fa-users nav-icon icon-xs me-2"></i> Teams
             </router-link>
           </li>
@@ -48,9 +48,7 @@
     </nav>
     <!-- Page Content -->
     <div id="page-content">
-      <div class="container-fluid py-6">
-        <router-view />
-      </div>
+      <router-view />
     </div>
   </div>
 </template>

@@ -30,7 +30,7 @@
                   class="btn btn-primary rounded btn-sm"
                   @click="
                     $router.push({
-                      name: 'teamMember',
+                      name: 'createTeamMember',
                       params: {
                         teamId: team.id,
                       },

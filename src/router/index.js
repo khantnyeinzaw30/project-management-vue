@@ -1,13 +1,14 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
+import HomePage from "@/views/HomePage.vue";
 import LoginPage from "@/views/auth/LoginPage.vue";
 import RegisterPage from "@/views/auth/RegisterPage.vue";
 import CreateProject from "@/views/project/CreateProject.vue";
-import SingleProject from "@/views/project/SingleProject.vue";
+import UpdateProject from "@/views/project/UpdateProject.vue";
 import TaskList from "@/views/task/TaskList.vue";
-import RegisterTeam from "@/views/team_member/RegisterTeam.vue";
-import TeamMember from "@/views/team_member/TeamMember.vue";
 import CreateTask from "@/views/task/CreateTask.vue";
+import TaskDetails from "@/views/task/TaskDetails.vue";
+import CreateTeam from "@/views/team_member/CreateTeam.vue";
+import CreateTeamMember from "@/views/team_member/CreateTeamMember.vue";
 // import store from "@/store";
 
 const routes = [
@@ -15,7 +16,7 @@ const routes = [
     path: "/",
     name: "home",
     alias: "/home",
-    component: HomeView,
+    component: HomePage,
   },
   {
     path: "/login",
@@ -34,8 +35,8 @@ const routes = [
   },
   {
     path: "/project/:projectId",
-    name: "singleProject",
-    component: SingleProject,
+    name: "updateProject",
+    component: UpdateProject,
     props: true,
   },
   {
@@ -49,14 +50,20 @@ const routes = [
     component: CreateTask,
   },
   {
-    path: "/register_new_team",
-    name: "registerTeam",
-    component: RegisterTeam,
+    path: "/taskDetails/:taskId",
+    name: "taskDetails",
+    component: TaskDetails,
+    props: true,
   },
   {
-    path: "/team_member/:teamId",
-    name: "teamMember",
-    component: TeamMember,
+    path: "/create_new_team",
+    name: "createTeam",
+    component: CreateTeam,
+  },
+  {
+    path: "/create_team_member/:teamId",
+    name: "createTeamMember",
+    component: CreateTeamMember,
     props: true,
   },
 ];

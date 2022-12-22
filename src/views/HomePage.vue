@@ -94,13 +94,13 @@
     </div>
     <div class="row mt-6">
       <div class="col-md-12 col-12">
-        <ActiveProjects />
+        <ActiveProjectsComponent />
       </div>
     </div>
     <div class="row my-6">
       <!-- card  -->
       <div class="col-lg-12 col-md-12 col-12">
-        <TeamMembers />
+        <TeamMembersComponent />
       </div>
     </div>
   </div>
@@ -108,14 +108,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import ActiveProjects from "../components/ActiveProjects.vue";
-import TeamMembers from "../components/TeamMembersComponent.vue";
+import ActiveProjectsComponent from "@/components/ActiveProjectsComponent.vue";
+import TeamMembersComponent from "@/components/TeamMembersComponent.vue";
 
 export default {
   name: "HomeView",
   components: {
-    ActiveProjects,
-    TeamMembers,
+    ActiveProjectsComponent,
+    TeamMembersComponent,
   },
   data() {
     return {

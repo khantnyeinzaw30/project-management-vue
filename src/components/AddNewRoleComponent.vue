@@ -1,5 +1,5 @@
 <template>
-  <div class="card w-75">
+  <div class="card">
     <div class="card-body">
       <div class="mb-4">
         <a href="#">
@@ -53,7 +53,8 @@ export default {
         })
         .then((response) => {
           if (response.data.status) {
-            this.$router.push({ name: "registerTeam" });
+            // location.reload();
+            this.$router.push({ name: "createTeam" });
           }
         })
         .catch((err) => console.log(err));
