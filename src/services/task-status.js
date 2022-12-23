@@ -1,15 +1,13 @@
-export default function changeTaskStatusValue(tasks) {
-  tasks.forEach((element) => {
-    switch (element.task_stage) {
-      case 0:
-        element.task_stage = "Not Started";
-        break;
-      case 1:
-        element.task_stage = "In Progress";
-        break;
-      case 2:
-        element.task_stage = "Done";
-        break;
-    }
-  });
+export default function changeTaskStatusValue(task) {
+  switch (task.task_stage) {
+    case 0:
+      task.task_stage = "Not Started";
+      break;
+    case 1:
+      task.task_stage = "In Progress";
+      break;
+    case 2:
+      task.task_stage = "Done";
+      break;
+  }
 }

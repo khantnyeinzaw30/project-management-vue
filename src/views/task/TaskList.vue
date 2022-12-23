@@ -15,7 +15,6 @@
                 <tr>
                   <th>Task name</th>
                   <th>Priority</th>
-                  <th>Status</th>
                   <th>Project</th>
                   <th></th>
                 </tr>
@@ -51,23 +50,6 @@
                     >
                   </td>
                   <td class="align-middle">
-                    <span
-                      class="badge text-bg-primary"
-                      v-if="task.task_stage === 'Not Started'"
-                      >{{ task.task_stage }}</span
-                    >
-                    <span
-                      class="badge text-bg-info"
-                      v-if="task.task_stage === 'In Progress'"
-                      >{{ task.task_stage }}</span
-                    >
-                    <span
-                      class="badge text-bg-danger"
-                      v-if="task.task_stage === 'Done'"
-                      >{{ task.task_stage }}</span
-                    >
-                  </td>
-                  <td class="align-middle">
                     <h5 class="fw-bold mb-1">
                       <router-link
                         :to="{
@@ -80,24 +62,17 @@
                     </h5>
                   </td>
                   <td class="align-middle">
-                    <div
-                      class="d-flex justify-content-center align-items-center gap-1"
+                    <button
+                      class="btn btn-info"
+                      @click="
+                        $router.push({
+                          name: 'taskDetails',
+                          params: { taskId: task.id },
+                        })
+                      "
                     >
-                      <button
-                        class="btn btn-info"
-                        @click="
-                          $router.push({
-                            name: 'taskDetails',
-                            params: { taskId: task.id },
-                          })
-                        "
-                      >
-                        <i class="fa-solid fa-pen-to-square"></i>
-                      </button>
-                      <button class="btn btn-danger">
-                        <i class="fa-solid fa-trash"></i>
-                      </button>
-                    </div>
+                      <i class="fa-solid fa-circle-info"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
@@ -110,8 +85,7 @@
 </template>
 
 <script>
-// import changePriorityValue from "@/services/priority";
-// import changeTaskStatusValue from "@/services/task-status";
+import changePriorityValue from "@/services/priority";
 import { mapGetters } from "vuex";
 
 export default {
@@ -127,23 +101,24 @@ export default {
     }),
   },
   methods: {
-    // getTasks() {
-    //   let userData = JSON.parse(localStorage.getItem("userData"));
-    //   let userId = userData.id;
-    //   this.axios
-    //     .get(`/api/assigned_tasks/${userId}`, {
-    //       headers: this.headers,
-    //     })
-    //     .then((response) => {
-    //       changePriorityValue(response.data.assignedTasks);
-    //       changeTaskStatusValue(response.data.assignedTasks);
-    //       this.taskList = response.data.assignedTasks;
-    //     })
-    //     .catch((err) => console.log(err));
-    // },
+    getTasks() {
+      let userData = JSON.parse(localStorage.getItem("userData"));
+      let userId = userData.id;
+      this.axios
+        .get(`/api/assignedTasks/${userId}`, {
+          headers: this.headers,
+        })
+        .then((response) => {
+          response.data.taskList.forEach((task) => {
+            changePriorityValue(task);
+          });
+          this.taskList = response.data.taskList;
+        })
+        .catch((err) => console.log(err));
+    },
   },
   mounted() {
-    // this.getTasks();
+    this.getTasks();
   },
 };
 </script>

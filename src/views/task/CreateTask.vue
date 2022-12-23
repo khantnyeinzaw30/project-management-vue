@@ -10,24 +10,10 @@
               <a href="#">
                 <LogoComponent />
               </a>
-              <p class="mb-6">Create New Task and assign another user</p>
+              <p class="mb-6">Create Task first and select assignee.</p>
             </div>
             <!-- Form -->
             <form @submit.prevent="createTask">
-              <!-- select user to assign
-              <div class="mb-3">
-                <label class="form-label">User to assign</label>
-                <select class="form-select" v-model="fields.user_id">
-                  <option value="">Choose user</option>
-                  <option
-                    v-for="user in userList"
-                    :key="user.id"
-                    :value="user.id"
-                  >
-                    {{ user.name }}
-                  </option>
-                </select>
-              </div> -->
               <!-- task name -->
               <div class="mb-3">
                 <label class="form-label">Name</label>
@@ -73,6 +59,19 @@
                   <option value="2">High</option>
                 </select>
               </div>
+              <div class="mb-3">
+                <label class="form-label">Assignee</label>
+                <select class="form-select" v-model="fields.assignee_id">
+                  <option value="">Choose Assignee</option>
+                  <option
+                    :value="user.id"
+                    v-for="user in userList"
+                    :key="user.id"
+                  >
+                    {{ user.name }}
+                  </option>
+                </select>
+              </div>
               <div>
                 <!-- start date -->
                 <div class="mb-3">
@@ -114,16 +113,17 @@ export default {
   components: { LogoComponent },
   data() {
     return {
+      projectList: [],
+      userList: [],
       fields: {
         task_name: "",
         description: "",
         project_id: "",
         priority: "",
+        assignee_id: "",
         started_at: "",
         ended_at: "",
       },
-      projectList: [],
-      userList: [],
     };
   },
   computed: {
@@ -138,6 +138,7 @@ export default {
           headers: this.headers,
         })
         .then((response) => {
+          console.log(response.data);
           if (response.data.status) {
             this.$router.push({ name: "home" });
           }
@@ -153,13 +154,13 @@ export default {
         .catch((err) => console.log(err));
     },
     getUsers() {
-      let userData = JSON.parse(localStorage.getItem("userData"));
-      let userId = userData.id;
       this.axios
-        .get(`/api/userList/${userId}`, {
+        .get(`/api/userList`, {
           headers: this.headers,
         })
-        .then((response) => (this.userList = response.data.userList))
+        .then((response) => {
+          this.userList = response.data.userList;
+        })
         .catch((err) => console.log(err));
     },
   },

@@ -17,13 +17,12 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link has-arrow" :to="{ name: 'taskList' }">
-              <i class="fa-solid fa-house nav-icon icon-xs me-2"></i> Task List
+              <i class="fa-solid fa-list nav-icon icon-xs me-2"></i> Task List
             </router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-link" :to="{ name: 'createTask' }">
-              <i class="fa-solid fa-users nav-icon icon-xs me-2"></i> Create New
-              Task
+              <i class="fa-solid fa-plus nav-icon icon-xs me-2"></i> Assign Task
             </router-link>
           </li>
           <li class="nav-item">
