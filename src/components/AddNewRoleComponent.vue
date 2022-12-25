@@ -53,8 +53,7 @@ export default {
         })
         .then((response) => {
           if (response.data.status) {
-            // location.reload();
-            this.$router.push({ name: "createTeam" });
+            this.$emit("push", response.data.role);
           }
         })
         .catch((err) => console.log(err));

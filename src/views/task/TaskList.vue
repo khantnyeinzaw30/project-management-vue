@@ -102,7 +102,7 @@ export default {
   },
   methods: {
     getTasks() {
-      let userData = JSON.parse(localStorage.getItem("userData"));
+      let userData = JSON.parse(localStorage.getItem("user"));
       let userId = userData.id;
       this.axios
         .get(`/api/assignedTasks/${userId}`, {

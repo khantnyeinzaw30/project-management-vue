@@ -68,7 +68,7 @@
         </div>
       </div>
       <div v-if="addNewRole" class="w-75">
-        <AddNewRoleComponent />
+        <AddNewRoleComponent @push="pushNewRole" />
       </div>
     </div>
   </div>
@@ -132,6 +132,10 @@ export default {
         })
         .then((response) => (this.teamName = response.data.team.team_name))
         .catch((err) => console.log(err));
+    },
+    pushNewRole(role) {
+      this.roleList.push(role);
+      this.addNewRole = false;
     },
   },
   mounted() {

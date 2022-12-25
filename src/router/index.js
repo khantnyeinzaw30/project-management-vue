@@ -9,7 +9,6 @@ import CreateTask from "@/views/task/CreateTask.vue";
 import TaskDetails from "@/views/task/TaskDetails.vue";
 import CreateTeam from "@/views/team_member/CreateTeam.vue";
 import CreateTeamMember from "@/views/team_member/CreateTeamMember.vue";
-// import store from "@/store";
 
 const routes = [
   {
@@ -72,14 +71,5 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
 });
-
-// router.beforeEach((to, from, next) => {
-//   store.commit("currentUserAuth");
-//   if (to.name !== "login" && !store.authentication) {
-//     next({ name: "login" });
-//   } else if (from.name === "login" && store.authentication) {
-//     next();
-//   }
-// });
 
 export default router;

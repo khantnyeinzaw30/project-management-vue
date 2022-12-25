@@ -61,13 +61,17 @@
 </style>
 
 <script>
+import { mapActions } from "vuex";
 import LogoComponent from "../src/components/LogoComponent.vue";
 
 export default {
   components: { LogoComponent },
   methods: {
+    ...mapActions({
+      logout: "auth/logout",
+    }),
     handleLogout() {
-      this.$store.commit("logout");
+      this.logout();
       if (this.$route.name !== "login") {
         this.$router.push("/login");
       }

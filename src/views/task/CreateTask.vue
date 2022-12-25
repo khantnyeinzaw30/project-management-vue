@@ -138,7 +138,6 @@ export default {
           headers: this.headers,
         })
         .then((response) => {
-          console.log(response.data);
           if (response.data.status) {
             this.$router.push({ name: "home" });
           }

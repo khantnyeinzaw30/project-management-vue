@@ -12,6 +12,9 @@
           <div class="alert alert-danger" v-if="logginFailed">
             <strong>The credentials do not match!</strong>
           </div>
+          <div class="alert alert-danger" v-if="isRequired">
+            <strong>Please fill all fields!</strong>
+          </div>
           <!-- Form -->
           <form @submit.prevent="login">
             <!-- email -->
@@ -41,7 +44,13 @@
             <div>
               <!-- Button -->
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  :disabled="processing"
+                >
+                  {{ processing ? "Please wait" : "Sign In" }}
+                </button>
               </div>
               <div class="d-md-flex justify-content-between mt-4">
                 <div class="mb-md-0">
@@ -71,27 +80,32 @@ export default {
         email: "",
         password: "",
       },
+      processing: false,
       logginFailed: false,
+      isRequired: false,
     };
   },
   methods: {
-    ...mapActions(["storeUserData"]),
-    login() {
+    ...mapActions({
+      signIn: "auth/login",
+    }),
+    async login() {
       if (!this.loginData.email || !this.loginData.password) {
-        alert("Please fill all the inputs");
+        this.isRequired = true;
       } else {
-        this.axios
+        this.processing = true;
+        await this.axios.get("/sanctum/csrf-cookie");
+        await this.axios
           .post("/api/login", this.loginData)
           .then((response) => {
-            if (response.data.status == true) {
-              this.storeUserData(response.data).then(() =>
-                this.$router.push({ name: "home" })
-              );
+            if (response.data.status) {
+              this.signIn(response.data);
             } else {
               this.logginFailed = true;
             }
           })
-          .catch((error) => console.log(error.message));
+          .catch((error) => console.log(error.message))
+          .finally(() => (this.processing = false));
       }
     },
     // clear input

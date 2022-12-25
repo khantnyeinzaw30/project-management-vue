@@ -134,7 +134,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["storeUserData"]),
+    ...mapActions({
+      signIn: "auth/login",
+    }),
     register() {
       if (
         !this.registerData.name ||
@@ -152,10 +154,8 @@ export default {
         this.axios
           .post("/api/register", this.registerData)
           .then((response) => {
-            if (response.data.status == true) {
-              this.storeUserData(response.data).then(() =>
-                this.$router.push({ name: "home" })
-              );
+            if (response.data.status) {
+              this.signIn(response.data);
             } else {
               this.errors = response.data.errors;
             }
