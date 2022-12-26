@@ -10,7 +10,7 @@
               <a href="#">
                 <LogoComponent />
               </a>
-              <p class="mb-6">Register your new team</p>
+              <p class="mb-6">Create New Team</p>
             </div>
             <!-- errors message -->
             <div class="alert alert-danger mb-2" v-if="errors.length">

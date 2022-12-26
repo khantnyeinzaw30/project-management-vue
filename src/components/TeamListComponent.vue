@@ -1,5 +1,5 @@
 <template>
-  <div class="card h-100">
+  <div class="card h-100" v-if="teamList.length">
     <!-- card header  -->
     <div class="card-header bg-white border-bottom-0 py-4">
       <h4 class="mb-0">Teams</h4>

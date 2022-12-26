@@ -89,13 +89,12 @@ export default {
     ...mapActions({
       signIn: "auth/login",
     }),
-    async login() {
+    login() {
       if (!this.loginData.email || !this.loginData.password) {
         this.isRequired = true;
       } else {
         this.processing = true;
-        await this.axios.get("/sanctum/csrf-cookie");
-        await this.axios
+        this.axios
           .post("/api/login", this.loginData)
           .then((response) => {
             if (response.data.status) {

@@ -92,8 +92,12 @@
             <div>
               <!-- Button -->
               <div class="d-grid">
-                <button type="submit" class="btn btn-primary">
-                  Create Account
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  :disabled="processing"
+                >
+                  {{ processing ? "Please wait" : "Create account" }}
                 </button>
               </div>
 
@@ -131,6 +135,7 @@ export default {
       isRequired: "",
       isPasswordNotConfirmed: "",
       errors: null,
+      processing: false,
     };
   },
   methods: {
@@ -151,6 +156,7 @@ export default {
         this.isPasswordNotConfirmed =
           "Password and password confirmation didn't match!";
       } else {
+        this.processing = true;
         this.axios
           .post("/api/register", this.registerData)
           .then((response) => {
@@ -160,7 +166,8 @@ export default {
               this.errors = response.data.errors;
             }
           })
-          .catch((error) => console.log(error));
+          .catch((error) => console.log(error))
+          .finally(() => (this.processing = false));
       }
     },
   },

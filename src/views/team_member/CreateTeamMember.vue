@@ -48,8 +48,7 @@
                 />
                 <label class="form-check-label" for="agreeCheck"
                   ><span class="fs-5"
-                    >Registering as a team member can be done only once. Are you
-                    sure ?</span
+                    >Are you sure to be a part of this team?</span
                   ></label
                 >
               </div>
@@ -61,7 +60,11 @@
                 class="btn btn-info"
                 @click="addNewRole = !addNewRole"
               >
-                Add new role
+                {{
+                  addNewRole
+                    ? "choose role in options after you added your role"
+                    : "add new role"
+                }}
               </button>
             </div>
           </form>
@@ -78,6 +81,7 @@
 import { mapGetters } from "vuex";
 import LogoComponent from "@/components/LogoComponent.vue";
 import AddNewRoleComponent from "@/components/AddNewRoleComponent.vue";
+import user from "@/services/user";
 
 export default {
   name: "TeamMember",
@@ -86,6 +90,7 @@ export default {
   data() {
     return {
       fields: {
+        user_id: user.id,
         role_id: "",
         team_id: this.teamId,
       },

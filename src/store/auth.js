@@ -18,10 +18,10 @@ export default {
   },
   actions: {
     login: ({ commit }, data) => {
-      commit("SET_USER", data.user);
-      commit("SET_AUTHENTICATED", true);
       localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("api-key", data.token);
+      commit("SET_USER", data.user);
+      commit("SET_AUTHENTICATED", true);
       router.push({ name: "home" });
     },
     logout: ({ commit }) => {

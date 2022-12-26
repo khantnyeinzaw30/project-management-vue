@@ -35,7 +35,7 @@
             </div>
             <!-- project number -->
             <div>
-              <h1 class="fw-bold">{{ projectCount }}</h1>
+              <h1 class="fw-bold">{{ counts.projectCount }}</h1>
               <!-- <p class="mb-0"><span class="text-dark me-2">2</span>Completed</p> -->
             </div>
           </div>
@@ -49,7 +49,7 @@
             <!-- heading -->
             <div class="d-flex justify-content-between align-items-center mb-3">
               <div>
-                <h4 class="mb-0">Active Task</h4>
+                <h4 class="mb-0">Active Tasks</h4>
               </div>
               <div
                 class="icon-shape icon-md bg-light-primary text-primary rounded-1"
@@ -59,7 +59,7 @@
             </div>
             <!-- project number -->
             <div>
-              <h1 class="fw-bold">{{ taskCount }}</h1>
+              <h1 class="fw-bold">{{ counts.taskCount }}</h1>
               <!-- <p class="mb-0">
                 <span class="text-dark me-2">28</span>Completed
               </p> -->
@@ -85,19 +85,19 @@
             </div>
             <!-- project number -->
             <div>
-              <h1 class="fw-bold">{{ teamCount }}</h1>
+              <h1 class="fw-bold">{{ counts.teamCount }}</h1>
               <!-- <p class="mb-0"><span class="text-dark me-2">1</span>Completed</p> -->
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row mt-6">
+    <div class="row mt-6" v-if="counts.projectCount">
       <div class="col-md-12 col-12">
         <ActiveProjectsComponent />
       </div>
     </div>
-    <div class="row my-6">
+    <div class="row my-6" v-if="counts.teamCount">
       <!-- card  -->
       <div class="col-lg-12 col-md-12 col-12">
         <TeamMembersComponent />
@@ -119,9 +119,11 @@ export default {
   },
   data() {
     return {
-      projectCount: 0,
-      teamCount: 0,
-      taskCount: 0,
+      counts: {
+        projectCount: 0,
+        taskCount: 0,
+        teamCount: 0,
+      },
     };
   },
   computed: {
@@ -136,9 +138,7 @@ export default {
           headers: this.headers,
         })
         .then((response) => {
-          this.projectCount = response.data.projectCount;
-          this.taskCount = response.data.taskCount;
-          this.teamCount = response.data.teamCount;
+          this.counts = { ...response.data };
         })
         .catch((e) => console.log(e));
     },

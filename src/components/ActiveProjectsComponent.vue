@@ -73,10 +73,6 @@
         </tbody>
       </table>
     </div>
-    <!-- card footer  -->
-    <div class="card-footer bg-white text-center">
-      <a href="#">View All Projects</a>
-    </div>
   </div>
 </template>
 

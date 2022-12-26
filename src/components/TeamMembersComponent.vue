@@ -2,7 +2,7 @@
   <div class="card h-100">
     <!-- card header  -->
     <div class="card-header bg-white border-bottom-0 py-4">
-      <h4 class="mb-0">Teams</h4>
+      <h4 class="mb-0">Team Members</h4>
     </div>
     <!-- table  -->
     <div class="table-responsive">

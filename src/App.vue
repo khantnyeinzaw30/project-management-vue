@@ -17,7 +17,7 @@
           </li>
           <li class="nav-item">
             <router-link class="nav-link has-arrow" :to="{ name: 'taskList' }">
-              <i class="fa-solid fa-list nav-icon icon-xs me-2"></i> Task List
+              <i class="fa-solid fa-list nav-icon icon-xs me-2"></i> To Do
             </router-link>
           </li>
           <li class="nav-item">

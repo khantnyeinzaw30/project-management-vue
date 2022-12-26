@@ -1,13 +1,15 @@
 <template>
   <div class="container-fluid px-3 py-4">
     <div class="row">
-      <div class="col-xl-6 col-lg-12 col-md-12 col-12 mb-6">
+      <div class="col-xl-10 offset-xl-1 col-lg-12 col-md-12 col-12 mb-6">
         <!-- card -->
         <div class="card">
           <!-- card body -->
           <div class="card-body">
             <!-- card title -->
-            <h2 class="card-title mb-4">{{ task.task_name }}</h2>
+            <h2 class="card-title mb-4 text-capitalize">
+              {{ task.task_name }}
+            </h2>
             <span class="text-uppercase fw-medium text-dark fs-5 ls-2"
               >Details</span
             >
@@ -18,14 +20,14 @@
               <div class="col-6 mb-5">
                 <!-- text -->
                 <h6 class="text-uppercase fs-5 ls-2">Project</h6>
-                <p class="mb-0">{{ task.project_name }}</p>
+                <p class="text-primary mb-0">{{ task.project_name }}</p>
               </div>
               <div class="col-6 mb-5">
                 <!-- text -->
                 <h6 class="text-uppercase fs-5 ls-2">Current Status</h6>
                 <div>
                   <span
-                    class="badge text-bg-primary"
+                    class="badge text-bg-danger"
                     v-if="task.task_stage === 'Not Started'"
                     >{{ task.task_stage }}</span
                   >
@@ -35,7 +37,7 @@
                     >{{ task.task_stage }}</span
                   >
                   <span
-                    class="badge text-bg-danger"
+                    class="badge text-bg-success"
                     v-if="task.task_stage === 'Done'"
                     >{{ task.task_stage }}</span
                   >
@@ -48,13 +50,19 @@
                     <select
                       class="form-select form-select-sm w-50 me-1"
                       v-model="fields.task_stage"
+                      :disabled="task.task_stage === 'Done'"
                     >
                       <option value="">Change Status</option>
                       <option value="0">Not Started</option>
                       <option value="1">In Progress</option>
                       <option value="2">Done</option>
                     </select>
-                    <button class="btn btn-primary btn-sm">Save</button>
+                    <button
+                      class="btn btn-primary btn-sm"
+                      v-if="task.task_stage !== 'Done'"
+                    >
+                      Save
+                    </button>
                   </div>
                 </form>
               </div>
